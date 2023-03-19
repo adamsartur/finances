@@ -1,11 +1,19 @@
-import { Transaction } from "@prisma/client";
 import { MouseEvent, useState } from "react";
 import { Modal } from "./Modal";
 import { NumericFormat } from "react-number-format";
 import { convertStringToNumber } from "../../utils/utils";
 
+interface TransactionProps {
+  id: number;
+  amount: number;
+  type: "in" | "out";
+  text: string;
+  category: string;
+  date: number;
+}
+
 interface TransactionFormProps {
-  onSave: (transaction: Transaction) => void;
+  onSave: (transaction: TransactionProps) => void;
   darkModeProp: boolean;
 }
 
@@ -26,7 +34,7 @@ export function TransactionForm({
 
     let amountValue = parseFloat(amount);
 
-    const newTransaction: Transaction = {
+    const newTransaction: TransactionProps = {
       id: Math.floor(Math.random() * 1000000),
       text,
       amount: convertStringToNumber(amount),
@@ -49,7 +57,7 @@ export function TransactionForm({
 
     let amountValue = parseFloat(amount);
 
-    const newTransaction: Transaction = {
+    const newTransaction: TransactionProps = {
       id: Math.floor(Math.random() * 1000000),
       text,
       amount: convertStringToNumber(amount),

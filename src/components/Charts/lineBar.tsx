@@ -10,7 +10,15 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { Transaction } from "@prisma/client";
+
+interface TransactionProps {
+  id: number;
+  amount: number;
+  type: "in" | "out";
+  text: string;
+  category: string;
+  date: number;
+}
 
 ChartJS.register(
   CategoryScale,
@@ -23,7 +31,7 @@ ChartJS.register(
 );
 
 interface LineBarProps {
-  transactionList?: Transaction[];
+  transactionList?: TransactionProps[];
 }
 
 export const options = {
