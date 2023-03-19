@@ -10,15 +10,16 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
+import { Transaction } from "@prisma/client";
 
-interface Transaction {
-  id: number;
-  amount: number;
-  type: "in" | "out";
-  text: string;
-  category: string;
-  date: number;
-}
+// interface Transaction {
+//   id: number;
+//   amount: number;
+//   type: "in" | "out";
+//   text: string;
+//   category: string;
+//   date: number;
+// }
 
 ChartJS.register(
   CategoryScale,

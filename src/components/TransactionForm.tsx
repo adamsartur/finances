@@ -2,15 +2,16 @@ import { MouseEvent, useState } from "react";
 import { Modal } from "./Modal";
 import { NumericFormat } from "react-number-format";
 import { convertStringToNumber } from "../../utils/utils";
+import { Transaction } from "@prisma/client";
 
-interface Transaction {
-  id: number;
-  amount: number;
-  type: "in" | "out";
-  text: string;
-  category: string;
-  date: number;
-}
+// interface Transaction {
+//   id: number;
+//   amount: number;
+//   type: "in" | "out";
+//   text: string;
+//   category: string;
+//   date: number;
+// }
 
 interface TransactionFormProps {
   onSave: (transaction: Transaction) => void;

@@ -1,16 +1,17 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
+import { Transaction } from "@prisma/client";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-interface Transaction {
-  id: number;
-  amount: number;
-  type: "in" | "out";
-  text: string;
-  category: string;
-  date: number;
-}
+// interface Transaction {
+//   id: number;
+//   amount: number;
+//   type: "in" | "out";
+//   text: string;
+//   category: string;
+//   date: number;
+// }
 
 interface CategoryPieChartProps {
   transactionList?: Transaction[];
