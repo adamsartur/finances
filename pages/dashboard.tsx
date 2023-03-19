@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import classNames from "classnames";
-import { PrismaClient, Transaction } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import { Card } from "@/components/Card";
 import { convertBrl, convertUnix } from "../utils/utils";
 import "../src/app/globals.css";
@@ -9,15 +9,24 @@ import { CategoryPieChart } from "@/components/Charts/pie";
 import { LineBar } from "@/components/Charts/lineBar";
 import { TransactionForm } from "@/components/TransactionForm";
 
+interface TransactionProps {
+  id: number;
+  amount: number;
+  type: "in" | "out";
+  text: string;
+  category: string;
+  date: number;
+}
+
 const prisma = new PrismaClient();
 interface TransactionsProps {
-  transactions: Transaction[];
+  transactions: TransactionProps[];
 }
 
 export default function Dashboard({ transactions }: TransactionsProps) {
   const [darkMode, setDarkMode] = useState(false);
   const [transactionList, setTransactionList] =
-    useState<Transaction[]>(transactions);
+    useState<TransactionProps[]>(transactions);
   const [currentValue, setCurrentValue] = useState(0);
   const [totalOut, setTotalOut] = useState(0);
   const [totalIn, setTotalIn] = useState(0);
@@ -62,7 +71,7 @@ export default function Dashboard({ transactions }: TransactionsProps) {
     document.body.classList.toggle("dark");
   }
 
-  function handleOnSave(newTransaction: Transaction) {
+  function handleOnSave(newTransaction: TransactionProps) {
     console.log("saved");
     console.log(newTransaction);
     setTransactionList([newTransaction, ...transactionList]);
