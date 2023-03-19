@@ -11,7 +11,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 
-interface TransactionProps {
+interface Transaction {
   id: number;
   amount: number;
   type: "in" | "out";
@@ -31,7 +31,7 @@ ChartJS.register(
 );
 
 interface LineBarProps {
-  transactionList?: TransactionProps[];
+  transactionList?: Transaction[];
 }
 
 export const options = {

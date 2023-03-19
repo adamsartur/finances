@@ -3,7 +3,7 @@ import { Modal } from "./Modal";
 import { NumericFormat } from "react-number-format";
 import { convertStringToNumber } from "../../utils/utils";
 
-interface TransactionProps {
+interface Transaction {
   id: number;
   amount: number;
   type: "in" | "out";
@@ -13,7 +13,7 @@ interface TransactionProps {
 }
 
 interface TransactionFormProps {
-  onSave: (transaction: TransactionProps) => void;
+  onSave: (transaction: Transaction) => void;
   darkModeProp: boolean;
 }
 
@@ -34,7 +34,7 @@ export function TransactionForm({
 
     let amountValue = parseFloat(amount);
 
-    const newTransaction: TransactionProps = {
+    const newTransaction: Transaction = {
       id: Math.floor(Math.random() * 1000000),
       text,
       amount: convertStringToNumber(amount),
@@ -57,7 +57,7 @@ export function TransactionForm({
 
     let amountValue = parseFloat(amount);
 
-    const newTransaction: TransactionProps = {
+    const newTransaction: Transaction = {
       id: Math.floor(Math.random() * 1000000),
       text,
       amount: convertStringToNumber(amount),

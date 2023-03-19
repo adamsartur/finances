@@ -3,7 +3,7 @@ import { Pie } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-interface TransactionProps {
+interface Transaction {
   id: number;
   amount: number;
   type: "in" | "out";
@@ -13,7 +13,7 @@ interface TransactionProps {
 }
 
 interface CategoryPieChartProps {
-  transactionList?: TransactionProps[];
+  transactionList?: Transaction[];
 }
 
 export const CategoryPieChart = ({
@@ -64,7 +64,7 @@ export const CategoryPieChart = ({
       plugins: {
         legend: {
           display: true,
-          position: "right",
+          position: "right" as "right",
         },
       },
     },
