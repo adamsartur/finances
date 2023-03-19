@@ -1,4 +1,4 @@
-import { PrismaClient, Transaction } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import { convertBrl, convertUnix } from "../utils/utils";
 import { useEffect, useState } from "react";
 import classNames from "classnames";
@@ -8,6 +8,15 @@ import { Card } from "@/components/Card";
 import axios from "axios";
 
 const prisma = new PrismaClient();
+
+interface Transaction {
+  id: number;
+  amount: number;
+  type: "in" | "out";
+  text: string;
+  category: string;
+  date: number;
+}
 
 interface TransactionsProps {
   transactions: Transaction[];
